@@ -12,14 +12,12 @@ dependencies:
   - pip
   - pytask>=0.0.11
   - pytask-latex>=0.0.10
-
-
+  - seaborn
+  - statsmodels
   - pytest
   - pytest-cov
   - python=3.8.5
   - python-graphviz
-
-
   - virtualenv=20.0.33
 
   - pip:
