@@ -220,3 +220,22 @@ incidence_means = inc.groupby(["month_year"], as_index=False).mean()
 incidence_means["natural_log_nc_incidence"] = np.log(incidence_means["nc_incidence"])
 incidence_means["logarithm_base10"] = np.log10(incidence_means["nc_incidence"])
 print(incidence_means)
+
+
+inc["Date"] = pd.to_datetime(inc["date"]).dt.to_period("D")
+inc_plt = inc.set_index("Date")
+inc_plt_time_series = inc_plt.drop(
+    columns=[
+        "iso_code",
+        "new_cases",
+        "total_cases",
+        "location",
+        "continent",
+        "month_year",
+        "date",
+    ]
+)
+
+inc_plt_time_series_2 = inc_plt.drop(
+    columns=["iso_code", "location", "continent", "month_year", "date"]
+)
