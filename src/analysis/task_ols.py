@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import statsmodels.api as sm
 
-# import pandas as pd
+# import matplotlib.pyplot as plt
 
 sys.path.append("src/data_management")
 from data_management import incidence_means
@@ -29,13 +29,30 @@ x = np.array(x).T
 results = sm.OLS(endog=y, exog=x).fit()
 print(results.summary())
 
+print(results.summary())
+
+# plt.rc("figure", figsize=(12, 7))
+# plt.text(
+#     0.01, 0.05, str(results.summary()), {"fontsize": 10}, fontproperties="monospace"
+# )
+# plt.axis("off")
+# plt.tight_layout()
+# plt.savefig("bld/analysis/model.png")
+
 
 # OLS wave 2
 y = incidence_means.iloc[2:3, 1:2].values
 x = [[1], [mean_series.values[11]], [mean_series.values[12]]]
 x = np.array(x).T
-results = sm.OLS(endog=y, exog=x).fit()
-print(results.summary())
+results2 = sm.OLS(endog=y, exog=x).fit()
+print(results2.summary())
+
+# plt.rc("figure", figsize=(12, 7))
+# plt.text(
+#     0.01, 0.05, str(results2.summary()), {"fontsize": 10}, fontproperties="monospace"
+# )
+# plt.tight_layout()
+# plt.savefig("bld/analysis/model2.png")
 
 
 # OLS wave 3
@@ -181,8 +198,6 @@ print(results.summary())
 
 
 # OLS Average across all the five waves with log base 10
-import numpy as np
-import statsmodels.api as sm
 
 y = [
     incidence_means.iloc[1:2, 6].values,
@@ -200,6 +215,5 @@ x = [
     [float(average_month.iloc[4:5, 22:23].values)],
 ]
 x = np.array(x)
-# x = sm.add_constant(x)
 results = sm.OLS(endog=y, exog=x).fit()
 print(results.summary())
