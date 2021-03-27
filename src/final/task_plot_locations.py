@@ -5,7 +5,7 @@ plt.rc("xtick", labelsize=10)
 plt.rc("ytick", labelsize=80)
 import seaborn as sns
 
-sns.set(rc={"figure.figsize": (30,20)})
+sns.set(rc={"figure.figsize": (50,25)})
 import sys
 sys.path.append("src/data_management")
 import pandas as pd
@@ -28,10 +28,10 @@ fig = plt.figure(figsize=(30, 20))
 # creating the bar plot
 
 plt.bar(scales, mean, color="purple", width=0.9)
-plt.xticks(fontsize=10, rotation=45)
-plt.xlabel("Variables of contact reduction for all waves", fontsize=15)
-plt.ylabel("Average", fontsize=15)
-plt.title("Mean of contact reduction variables", fontsize=15)
+plt.xticks(fontsize=14, rotation=45)
+# plt.xlabel("Variables of contact reduction for all waves", fontsize=15)
+plt.ylabel("Average", fontsize=20)
+plt.title("Mean of contact reduction variables", fontsize=20)
 plt.show()
 plt.savefig("bld/figures/contact_reduction_variables.png")
 
@@ -42,6 +42,9 @@ av_month = average_month.drop(columns=["mean_w1_w5"])
 av = av_month.rename(index=lambda x: x.strftime('%B'))
 sns.set()
 av.T.plot(kind='bar', stacked=True)
+# splot.set_ylabel('Normalized WS')                                                     
+plt.xticks(fontsize=20, rotation=45)                                                               
+plt.tight_layout()   
 plt.savefig("bld/figures/contact_reduction_variables_2.png")
 
 
