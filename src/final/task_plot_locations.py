@@ -2,15 +2,13 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 plt.rc("xtick", labelsize=10)
-plt.rc("ytick", labelsize=40)
+plt.rc("ytick", labelsize=80)
 import seaborn as sns
 
 sns.set(rc={"figure.figsize": (24.7, 10.27)})
 import sys
-
 sys.path.append("src/data_management")
 import pandas as pd
-
 # from task_data_management import incidence_means
 from task_data_management import mean_series
 from task_data_management import average_month
@@ -25,16 +23,15 @@ from task_data_management import incidence_means
 variables = list(mean_series.index)
 mean = list(mean_series.values)
 
-fig = plt.figure(figsize=(80, 50))
+fig = plt.figure(figsize=(30, 20))
 
 # creating the bar plot
 
-plt.bar(scales, mean, color="blue", width=0.9)
-plt.xticks(fontsize=29, rotation=45)
-
-plt.xlabel("Contact reduction variables", fontsize=30)
-plt.ylabel("Average", fontsize=30)
-plt.title("Contact reduction variables at their mean", fontsize=30)
+plt.bar(scales, mean, color="purple", width=0.9)
+plt.xticks(fontsize=10, rotation=45)
+plt.xlabel("Variables of contact reduction for all waves", fontsize=15)
+plt.ylabel("Average", fontsize=15)
+plt.title("Mean of contact reduction variables", fontsize=15)
 plt.show()
 plt.savefig("bld/figures/contact_reduction_variables.png")
 
