@@ -5,10 +5,12 @@ plt.rc("xtick", labelsize=10)
 plt.rc("ytick", labelsize=80)
 import seaborn as sns
 
-sns.set(rc={"figure.figsize": (50,25)})
+sns.set(rc={"figure.figsize": (50, 25)})
 import sys
+
 sys.path.append("src/data_management")
 import pandas as pd
+
 # from task_data_management import incidence_means
 from task_data_management import mean_series
 from task_data_management import average_month
@@ -18,7 +20,7 @@ from task_data_management import inc_plt_time_series_2
 from task_data_management import incidence_means
 
 
-# Plot mean of contact reduction variables 
+# Plot mean of contact reduction variables
 
 variables = list(mean_series.index)
 mean = list(mean_series.values)
@@ -36,15 +38,15 @@ plt.show()
 plt.savefig("bld/figures/contact_reduction_variables.png")
 
 # Plot mean of contact reduction variables with similar contact reduction variables between
-# wave four and wave five 
+# wave four and wave five
 
 av_month = average_month.drop(columns=["mean_w1_w5"])
-av = av_month.rename(index=lambda x: x.strftime('%B'))
+av = av_month.rename(index=lambda x: x.strftime("%B"))
 sns.set()
-av.T.plot(kind='bar', stacked=True)
-# splot.set_ylabel('Normalized WS')                                                     
-plt.xticks(fontsize=20, rotation=45)                                                               
-plt.tight_layout()   
+av.T.plot(kind="bar", stacked=True)
+# splot.set_ylabel('Normalized WS')
+plt.xticks(fontsize=20, rotation=45)
+plt.tight_layout()
 plt.savefig("bld/figures/contact_reduction_variables_2.png")
 
 
@@ -53,7 +55,12 @@ df1 = (
     av.stack()
     .reset_index()
     .set_index("month")
-    .rename(columns={"level_1": "Contact reduction variables", 0: "Mean of contact reduction variables"})
+    .rename(
+        columns={
+            "level_1": "Contact reduction variables",
+            0: "Mean of contact reduction variables",
+        }
+    )
 )
 
 plt.figure(figsize=(20, 10))
@@ -134,7 +141,7 @@ plt.legend(title="labels", bbox_to_anchor=(1.0, 1), loc="upper left")
 plt.show()
 plt.savefig("bld/figures/stackedbar.png")
 
-# create a bar plot with mean of contact reduction variables for each wave and a line plot 
+# create a bar plot with mean of contact reduction variables for each wave and a line plot
 # with the new cases incidence rate
 
 inc_plot = incidence_means.drop(
