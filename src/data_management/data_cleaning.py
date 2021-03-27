@@ -138,7 +138,6 @@ dictionary_map = {
     "much less often than before the outbreak": 0.0,
     "a little less often than before the outbreak": 0.0,
     "more often than before the outbreak": 0.0,
-    "more often than before the outbreak": 0.0,
 }
 
 covid_data = covid_data.replace(dictionary_map)
