@@ -20,3 +20,7 @@ representation of contact reducation behavior variables with the new COVID-19 ca
 
 #### Other changes include: 
 - the environment.yml contains two new packages seaborn and statsmodel. 
+
+## Acknowledgment
+
+We would like to express our deep gratitude to Professor Hans-Martin von Gaudecker, Janos Gabler and Gregor Boehl for their support and guidance. 
